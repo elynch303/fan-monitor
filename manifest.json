@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "local.fan-monitor",
+  "name": "Fan Monitor",
+  "version": "1.0.0",
+  "author": "local",
+  "description": "Fan speeds and system temperatures from lm-sensors",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Fan Monitor",
+    "description": "Fan speeds and system temperatures",
+    "category": "System",
+    "allowMultiple": false
+  }
+}
