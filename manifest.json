@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "local.fan-monitor",
+  "id": "io.github.elynch303.fan-monitor",
   "name": "Fan Monitor",
   "version": "1.0.0",
   "author": "elynch303",
-  "description": "Fan-speed and temperature badge (lm_sensors), installable on any Omarchy bar",
+  "description": "Fan-speed and temperature badge for Omarchy bars. Polls lm_sensors every 30s; click for per-fan RPM and per-chip temps (CPU, board, NVMe). Badge turns amber when elevated, red when hot.",
   "kinds": ["bar-widget"],
   "entryPoints": { "barWidget": "FanMonitorWidget.qml" }
 }
