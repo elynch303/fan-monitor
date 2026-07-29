@@ -3,18 +3,8 @@
   "id": "local.fan-monitor",
   "name": "Fan Monitor",
   "version": "1.0.0",
-  "author": "local",
-  "description": "Fan speeds and system temperatures from lm-sensors",
-  "kinds": [
-    "bar-widget"
-  ],
-  "entryPoints": {
-    "barWidget": "Panel.qml"
-  },
-  "barWidget": {
-    "displayName": "Fan Monitor",
-    "description": "Fan speeds and system temperatures",
-    "category": "System",
-    "allowMultiple": false
-  }
+  "author": "elynch303",
+  "description": "Fan-speed and temperature badge (lm_sensors), installable on any Omarchy bar",
+  "kinds": ["bar-widget"],
+  "entryPoints": { "barWidget": "FanMonitorWidget.qml" }
 }
