@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.Commons
+import qs.Commons as Commons
 import qs.Ui
 
 // Fan-speed and temperature badge, installable on any Omarchy bar. Polls
@@ -119,15 +120,15 @@ BarWidget {
   }
 
   function tempColor(t) {
-    if (t >= 80) return Color.urgent
+    if (t >= 80) return Commons.Color.urgent
     if (t >= 65) return "#e8a33d"
-    return Color.popups.text
+    return Commons.Color.popups.text
   }
 
   // The bar's own primary/foreground color (Rise's palette, or whatever
   // Bar.qml uses on the built-in bar) rather than Omarchy's generic accent,
   // so the badge matches whichever bar it's installed on.
-  readonly property color primaryColor: root.bar ? root.bar.barForeground : Color.foreground
+  readonly property color primaryColor: root.bar ? root.bar.barForeground : Commons.Color.foreground
 
   readonly property real worstTemp: {
     var w = -999
@@ -141,7 +142,7 @@ BarWidget {
   // Badge color reflects temperature, not fan state: primary while normal,
   // amber once elevated, red only once actually too hot.
   function badgeColor() {
-    if (worstTemp >= 80) return Color.urgent
+    if (worstTemp >= 80) return Commons.Color.urgent
     if (worstTemp >= 65) return "#e8a33d"
     return root.primaryColor
   }
@@ -192,26 +193,26 @@ BarWidget {
           spacing: 2
           Text {
             text: "Fan Monitor"
-            color: Color.popups.text
+            color: Commons.Color.popups.text
             font.family: Style.font.family
             font.pixelSize: Style.font.subtitle
             font.bold: true
           }
           Text {
             text: !root.loaded ? "Loading…" : (root.hasDeadFan ? "FAN STOPPED" : "All fans OK")
-            color: root.hasDeadFan ? Color.urgent : root.primaryColor
+            color: root.hasDeadFan ? Commons.Color.urgent : root.primaryColor
             font.family: Style.font.family
             font.pixelSize: Style.font.caption
           }
         }
       }
 
-      PanelSeparator { foreground: Color.popups.text }
+      PanelSeparator { foreground: Commons.Color.popups.text }
 
       Column {
         width: parent.width
         spacing: Style.spacing.xs
-        PanelSectionHeader { foreground: Color.popups.text; text: "FAN SPEEDS" }
+        PanelSectionHeader { foreground: Commons.Color.popups.text; text: "FAN SPEEDS" }
         Repeater {
           model: root.fans
           Row {
@@ -220,13 +221,13 @@ BarWidget {
             spacing: Style.spacing.sm
             Text {
               text: modelData.name
-              color: Qt.rgba(Color.popups.text.r, Color.popups.text.g, Color.popups.text.b, 0.6)
+              color: Qt.rgba(Commons.Color.popups.text.r, Commons.Color.popups.text.g, Commons.Color.popups.text.b, 0.6)
               font.family: Style.font.family; font.pixelSize: Style.font.bodySmall
               width: 48
             }
             Text {
               text: modelData.rpm === 0 ? "STOPPED" : modelData.rpm + " RPM"
-              color: modelData.rpm === 0 ? Color.urgent : Color.popups.text
+              color: modelData.rpm === 0 ? Commons.Color.urgent : Commons.Color.popups.text
               font.family: Style.font.family; font.pixelSize: Style.font.bodySmall
               font.bold: modelData.rpm === 0
             }
@@ -234,12 +235,12 @@ BarWidget {
         }
       }
 
-      PanelSeparator { foreground: Color.popups.text }
+      PanelSeparator { foreground: Commons.Color.popups.text }
 
       Column {
         width: parent.width
         spacing: Style.spacing.xs
-        PanelSectionHeader { foreground: Color.popups.text; text: "TEMPERATURES" }
+        PanelSectionHeader { foreground: Commons.Color.popups.text; text: "TEMPERATURES" }
         Repeater {
           model: root.temps
           Row {
@@ -249,7 +250,7 @@ BarWidget {
             readonly property real tempVal: parseFloat(modelData.value)
             Text {
               text: modelData.name
-              color: Qt.rgba(Color.popups.text.r, Color.popups.text.g, Color.popups.text.b, 0.6)
+              color: Qt.rgba(Commons.Color.popups.text.r, Commons.Color.popups.text.g, Commons.Color.popups.text.b, 0.6)
               font.family: Style.font.family; font.pixelSize: Style.font.bodySmall
               width: 76
             }
